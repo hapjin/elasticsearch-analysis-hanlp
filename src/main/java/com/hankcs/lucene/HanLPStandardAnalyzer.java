@@ -26,7 +26,8 @@ public class HanLPStandardAnalyzer extends Analyzer {
 
     @Override
     protected Analyzer.TokenStreamComponents createComponents(String fieldName) {
-        Tokenizer tokenizer = new HanLPTokenizer(HanLP.newSegment(), configuration);
+	HanLP.Config.Normalization = true;
+	Tokenizer tokenizer = new HanLPTokenizer(HanLP.newSegment(), configuration);
         return new Analyzer.TokenStreamComponents(tokenizer);
     }
 }
