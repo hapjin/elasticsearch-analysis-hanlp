@@ -29,8 +29,9 @@ public class HanLPStandardAnalyzer extends Analyzer {
 
     @Override
     protected Analyzer.TokenStreamComponents createComponents(String fieldName) {
-	AccessController.doPrivileged((PrivilegedAction) () -> HanLP.Config.Normalization = true);
-	Tokenizer tokenizer = new HanLPTokenizer(HanLP.newSegment(), configuration);
+        //分词时开启归一化
+        AccessController.doPrivileged((PrivilegedAction) () -> HanLP.Config.Normalization = true);
+        Tokenizer tokenizer = new HanLPTokenizer(HanLP.newSegment(), configuration);
         return new Analyzer.TokenStreamComponents(tokenizer);
     }
 }
